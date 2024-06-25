@@ -23,6 +23,8 @@ namespace ActCreator
         public MainWindow()
         {
             InitializeComponent();
+            MainFrame.Content = new MainPage();
+            MainFrame = Manager.MainFrame;
         }
     }
 }

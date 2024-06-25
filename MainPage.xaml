@@ -1,0 +1,153 @@
+﻿<Page x:Class="ActCreator.MainPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:ActCreator"
+      mc:Ignorable="d" 
+      d:DesignHeight="650" d:DesignWidth="950"
+      Title="MainPage">
+    <Page.Resources>
+        <Style TargetType="Label" x:Key="SmallerLB">
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="Foreground" Value="White"/>
+        </Style>
+        <Style TargetType="Label">
+            <Setter Property="FontSize" Value="16"/>
+            <Setter Property="Foreground" Value="White"/>
+        </Style>
+        <Style TargetType="TextBox" x:Key="SmallerTxb">
+            <Setter Property="Width" Value="150"/>
+            <Setter Property="Margin" Value="0,10,0,0"/>
+        </Style>
+        <Style TargetType="TextBox">
+            <Setter Property="Width" Value="200"/>
+            <Setter Property="Margin" Value="0,10,0,0"/>
+            <Setter Property="FontSize" Value="16"/>
+        </Style>
+
+    </Page.Resources>
+    <Grid Background="#404040">
+        <Grid.RowDefinitions>
+        <RowDefinition />
+        <RowDefinition Height="200"/>
+    </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="370"/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <WrapPanel HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top">
+            <StackPanel>
+                <Label Content="Акт №:" Style="{StaticResource SmallerLB}"/>
+                <Label Content="Дата создания:" Style="{StaticResource SmallerLB}"/>
+                <Label Content="Заказчик (работодатель):" Style="{StaticResource SmallerLB}"/>
+                <Label Content="Исполнитель (работник):" Style="{StaticResource SmallerLB}"/>
+                <Label Content="Тип акта (счета):" Style="{StaticResource SmallerLB}"/>
+            </StackPanel>
+            <StackPanel>
+                <TextBox  x:Name="ActNumber_TXB" Style="{StaticResource SmallerTxb}"/>
+                <Label/>
+                <DatePicker x:Name="WorkDate_DTP"/>
+                <TextBox x:Name="Company_TXB" Style="{StaticResource SmallerTxb}" Text="ИП Эйнатян"/>
+                <TextBox x:Name="Worker_TXB" Style="{StaticResource SmallerTxb}" Text="Джулфаян А.С."/>
+                <TextBox Margin="0,10,0,0" Style="{StaticResource SmallerTxb}" x:Name="ActType_TXB" Text="Для Сурена"/>
+            </StackPanel>
+        </WrapPanel>
+        <WrapPanel Grid.Row="0" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,10,0,0">
+            <StackPanel>
+                <Label Content="Наименование авто:"/>
+                <Label Content="VIN:" />
+                <Label Content="Гос. Номер:" />
+                <Label Content="Год:" />
+            </StackPanel>
+            <StackPanel>
+                    <TextBox x:Name="CarName_TXB" Visibility="Collapsed"/>
+                <ComboBox x:Name="CarName_CMB" Margin="0,8,0,0" FontSize="16" Text="{Binding Cars}" DisplayMemberPath="CarName" Visibility="Visible"/>
+                <TextBox x:Name="VIN_TXB" />
+                <TextBox x:Name="StateNumber_TXB"/>
+                <TextBox x:Name="Year_TXB" />
+            </StackPanel>
+            <Label/>
+            <StackPanel>
+                <Button x:Name="AddCarName_BTN" Click="AddCarName_BTN_Click" Content="add" Margin="0,8,0,0"/>
+            </StackPanel>
+        </WrapPanel>
+        <StackPanel HorizontalAlignment="Right" Margin="10" Grid.RowSpan="2" Grid.ColumnSpan="2" VerticalAlignment="Center">
+            <StackPanel HorizontalAlignment="Right" Margin="50" Grid.RowSpan="2" Grid.ColumnSpan="2" VerticalAlignment="Center" >
+                <WrapPanel HorizontalAlignment="Center" Grid.RowSpan="2" Grid.ColumnSpan="2" VerticalAlignment="Center" >
+                    <StackPanel>
+                        <Label Content="Наименование работы:"/>
+                        <TextBox x:Name="WorkName_TXB"  Text="{Binding WorkName}" FontSize="15" Width="350"/>
+                    </StackPanel>
+                    <Label/>
+                    <StackPanel>
+                        <Label Content="Цена:"/>
+                        <TextBox x:Name="WorkPrice_TXB" LostFocus="WorkPrice_TXB_LostFocus" Width="70" Text="{Binding WorkPrice}"/>
+                    </StackPanel>
+                </WrapPanel>
+                <Label/>
+                <WrapPanel HorizontalAlignment="Center">
+                    <Label FontSize="12" Content="Добавлять автоматически" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                    <CheckBox x:Name="AddWork_CB" IsChecked="True" VerticalAlignment="Center"/>
+
+                </WrapPanel>
+
+            </StackPanel>
+            <StackPanel Width="400" Background="#B5872B">
+                <WrapPanel>
+                    <StackPanel>
+                        <Label Content="Количество работ:"/>
+                        <Label Content="Общая стоимость всех работ:"/>
+                    </StackPanel>
+                    <StackPanel>
+                        <Label x:Name="CountWork_LB"/>
+                        <Label x:Name="AllPrice_LB"/>
+                    </StackPanel>
+                </WrapPanel>
+            </StackPanel>
+            <WrapPanel HorizontalAlignment="Center">
+                <Label Content="Открыть текст для копирования" FontSize="10"/>
+                <CheckBox x:Name="OpenCopyText_CB" VerticalAlignment="Center" IsChecked="True"/>
+            </WrapPanel>
+        </StackPanel>
+        
+        
+        <StackPanel  Grid.Row="0" HorizontalAlignment="Left" Margin="10,0,0,0" VerticalAlignment="Bottom" Grid.RowSpan="2" Grid.ColumnSpan="2">
+            <DataGrid x:Name="Works_DT" FontSize="16" ItemsSource="{Binding TempColumnWorks}" AutoGenerateColumns="False" CanUserAddRows="False"  Grid.ColumnSpan="2" Width="370" Height="250">
+                <DataGrid.Columns>
+                    <DataGridTemplateColumn Width="280"  MaxWidth="280" Header="Наименование работы">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding WorkName}" TextWrapping="Wrap"/>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+
+                    <DataGridTemplateColumn Header="Цена">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding WorkPrice}"/>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+
+                    <DataGridTemplateColumn>
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <Button Content="del" x:Name="DeleteWork_BTN" Click="DeleteWork_BTN_Click"/>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                </DataGrid.Columns>
+            </DataGrid>
+            <Label/>
+            <WrapPanel HorizontalAlignment="Center">
+                <Label FontSize="12" Content="Удалить после закрытия"/>
+                <CheckBox IsChecked="True" VerticalAlignment="Center" x:Name="DelAfterClose_CB"/>
+            </WrapPanel>
+        </StackPanel>
+
+        <Button Content="Распечатать"  HorizontalAlignment="Right" Grid.Row="1" Grid.Column="1" IsDefault="True" VerticalAlignment="Bottom" Height="40" Width="120" Margin="0,0,10,10" Style="{StaticResource MyButtonStyle}"  x:Name="Finish_BTN" Click="Finish_BTN_Click"/>
+
+    </Grid>
+</Page>
