@@ -69,7 +69,18 @@ namespace ActCreator
                 w.Show();
             }
             UpdateInfo();
+            string _fullInfo = $"Номер акта: {ActNumber_TXB.Text}. От: {WorkDate_DTP.Text} Количество работ: {CountWork}. Автомобиль: {CarModel}, государственный номер: {StateNumber}, VIN: {VIN}, год выпуска: {Year}.\n";
             Application.Current.MainWindow.WindowState = WindowState.Minimized;
+            _fullInfo += CopyTextWindow._Works;
+            
+            ActsHistory actsHistory = new ActsHistory
+            {
+                
+                FullInfo = _fullInfo
+
+            };
+            AppConnect.modelodb.ActsHistory.Add(actsHistory);
+            AppConnect.modelodb.SaveChanges();
         }
         public static void DelTempWorks()
         {

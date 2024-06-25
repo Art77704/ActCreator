@@ -20,6 +20,7 @@ namespace ActCreator
     /// </summary>
     public partial class CopyTextWindow : Window
     {
+        public static string _Works;
         public CopyTextWindow()
         {
             InitializeComponent();
@@ -29,9 +30,10 @@ namespace ActCreator
             int i = 0;
             foreach (var item in WorkN)
             {
-                Works_TXB.Text += $"{i + 1}) Наименование услуги и цена:\n" + item.ToString() + "\t" + AllPrice[i].ToString() + "\n";
+                Works_TXB.Text += $"{i + 1}) Наименование услуги и цена:\n" + item.ToString() + " " + AllPrice[i].ToString() + "\n";
                 i++;
             }
+            _Works = Works_TXB.Text;
         }
     }
 }
