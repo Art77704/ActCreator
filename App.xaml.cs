@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ActCreator.Properties;
+using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
@@ -16,6 +17,8 @@ namespace ActCreator
         private void Application_Exit(object sender, ExitEventArgs e)
         {
             MainPage.DelTempWorks();
+            Settings.Default["ActNumberP"] = MainPage.ActNumber;
+            Settings.Default.Save();
         }
     }
 }

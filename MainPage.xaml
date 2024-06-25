@@ -45,7 +45,7 @@
                 <Label Content="Тип акта (счета):" Style="{StaticResource SmallerLB}"/>
             </StackPanel>
             <StackPanel>
-                <TextBox  x:Name="ActNumber_TXB" Style="{StaticResource SmallerTxb}"/>
+                <TextBox  x:Name="ActNumber_TXB" Style="{StaticResource SmallerTxb}" TextChanged="ActNumber_TXB_TextChanged"/>
                 <Label/>
                 <DatePicker x:Name="WorkDate_DTP"/>
                 <TextBox x:Name="Company_TXB" Style="{StaticResource SmallerTxb}" Text="ИП Эйнатян"/>
@@ -93,7 +93,7 @@
                 </WrapPanel>
 
             </StackPanel>
-            <StackPanel Width="400" Background="#B5872B">
+            <StackPanel Width="400" Background="#787E89">
                 <WrapPanel>
                     <StackPanel>
                         <Label Content="Количество работ:"/>

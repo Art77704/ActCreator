@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ActCreator"
         mc:Ignorable="d"
-        Title="Для копирования текста" Height="450" Width="350">
+        Title="Для копирования текста" Height="450" Width="550" WindowStartupLocation="CenterScreen">
     <Grid>
         <TextBox x:Name="Works_TXB" FontSize="20" IsReadOnly="True"/>
     </Grid>
