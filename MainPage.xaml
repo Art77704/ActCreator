@@ -5,7 +5,7 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:ActCreator"
       mc:Ignorable="d" 
-      d:DesignHeight="650" d:DesignWidth="950"
+      d:DesignHeight="650" d:DesignWidth="1050"
       Title="MainPage">
     <Page.Resources>
         <Style TargetType="Label" x:Key="SmallerLB">
@@ -36,23 +36,32 @@
             <ColumnDefinition Width="370"/>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
-        <WrapPanel HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top">
-            <StackPanel>
-                <Label Content="Акт №:" Style="{StaticResource SmallerLB}"/>
-                <Label Content="Дата создания:" Style="{StaticResource SmallerLB}"/>
-                <Label Content="Заказчик (работодатель):" Style="{StaticResource SmallerLB}"/>
-                <Label Content="Исполнитель (работник):" Style="{StaticResource SmallerLB}"/>
-                <Label Content="Тип акта (счета):" Style="{StaticResource SmallerLB}"/>
-            </StackPanel>
-            <StackPanel>
-                <TextBox  x:Name="ActNumber_TXB" Style="{StaticResource SmallerTxb}" TextChanged="ActNumber_TXB_TextChanged"/>
-                <Label/>
-                <DatePicker x:Name="WorkDate_DTP"/>
-                <TextBox x:Name="Company_TXB" Style="{StaticResource SmallerTxb}" Text="ИП Эйнатян"/>
-                <TextBox x:Name="Worker_TXB" Style="{StaticResource SmallerTxb}" Text="Джулфаян А.С."/>
-                <TextBox Margin="0,10,0,0" Style="{StaticResource SmallerTxb}" x:Name="ActType_TXB" Text="Для Сурена"/>
-            </StackPanel>
-        </WrapPanel>
+        
+        <StackPanel HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top">
+            <WrapPanel HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top">
+                <StackPanel>
+                    <Label Content="Акт №:" Style="{StaticResource SmallerLB}"/>
+                    <Label Content="Дата создания:" Style="{StaticResource SmallerLB}"/>
+                    <Label Content="Заказчик (работодатель):" Style="{StaticResource SmallerLB}"/>
+                    <Label Content="Исполнитель (работник):" Style="{StaticResource SmallerLB}"/>
+                    <Label Content="Тип акта (счета):" Style="{StaticResource SmallerLB}"/>
+                </StackPanel>
+                <StackPanel>
+                    <TextBox  x:Name="ActNumber_TXB" Style="{StaticResource SmallerTxb}" TextChanged="ActNumber_TXB_TextChanged"/>
+                    <Label/>
+                    <DatePicker x:Name="WorkDate_DTP"/>
+                    <TextBox x:Name="Company_TXB" Style="{StaticResource SmallerTxb}" Text="ИП Эйнатян"/>
+                    <TextBox x:Name="Worker_TXB" Style="{StaticResource SmallerTxb}" Text="Джулфаян А.С."/>
+                    <TextBox Margin="0,10,0,0" Style="{StaticResource SmallerTxb}" x:Name="ActType_TXB" Text="Для Сурена"/>
+                </StackPanel>
+            </WrapPanel>
+            <Label/>
+            <WrapPanel>
+                <Label FontSize="10" Content="После закртытия не менять номер акта"/>
+                <CheckBox IsChecked="False" HorizontalAlignment="Center" Checked="ChangeAct_CB_Checked" x:Name="ChangeAct_CB" VerticalAlignment="Center"/>
+            </WrapPanel>
+        </StackPanel>
+
         <WrapPanel Grid.Row="0" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,10,0,0">
             <StackPanel>
                 <Label Content="Наименование авто:"/>

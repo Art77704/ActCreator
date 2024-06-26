@@ -17,8 +17,11 @@ namespace ActCreator
         private void Application_Exit(object sender, ExitEventArgs e)
         {
             MainPage.DelTempWorks();
-            Settings.Default["ActNumberP"] = MainPage.ActNumber;
-            Settings.Default.Save();
+            if (MainPage.ChangeAct == false)
+            {
+                Settings.Default["ActNumberP"] = MainPage.ActNumber;
+                Settings.Default.Save();
+            }
         }
     }
 }

@@ -29,6 +29,7 @@ namespace ActCreator
         public static string CarModel;
         public static string StateNumber;
         public static string VIN;
+        public static bool ChangeAct = false;
         public static string Year;
         private readonly string botToken = "6361510741:AAFen61LwkEVxat-UIxrK7lG0qjsJe4bIEo";
         private readonly long chatId = 667637277;
@@ -281,6 +282,14 @@ namespace ActCreator
         private void ActNumber_TXB_TextChanged(object sender, TextChangedEventArgs e)
         {
             ActNumber = int.Parse(ActNumber_TXB.Text);
+        }
+
+        private void ChangeAct_CB_Checked(object sender, RoutedEventArgs e)
+        {
+            if (ChangeAct_CB.IsChecked == true) 
+                ChangeAct = true;
+            else
+                ChangeAct = false;
         }
     }
 }
